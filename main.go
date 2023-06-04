@@ -8,7 +8,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", handlers.Home)
-	http.HandleFunc("/videos", handlers.Videos)
+	http.HandleFunc("/videos/", handlers.Videos)
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
 	log.Print("listening on 3333...")

@@ -4,11 +4,34 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func Videos(w http.ResponseWriter, r *http.Request) {
-	log.Printf("Videos %s request", r.URL)
+	parts := strings.Split(r.URL.Path, "/")
 
+	log.Printf("VideosIndex %s request %s", r.URL, parts[2])
+
+	if parts[2] != "" {
+		renderPlayer(w, parts[2])
+	} else {
+		renderIndex(w)
+	}
+}
+
+func renderPlayer(w http.ResponseWriter, filename string) {
+	vf := VideoFile{
+		Name: filename,
+	}
+
+	err := PlayerTemplate.Execute(w, vf)
+
+	if err != nil {
+		log.Printf("error rendering player: %s", err)
+	}
+}
+
+func renderIndex(w http.ResponseWriter) {
 	// collect list of video filenames from assets/videos
 
 	vfs, err := getVideos()
