@@ -14,5 +14,5 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("Home %s request", r.URL)
 
-	Templates["home"].Execute(w, nil)
+	http.Redirect(w, r, "/videos", 303)
 }

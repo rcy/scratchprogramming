@@ -63,14 +63,15 @@
       <img width="300px" src="/assets/scratchcat.png" />
     </div>
     <div class="content">
-      <h1>Videos</h1>
+      <h2>Videos from the Scratch Team</h2>
 
-      {{range .Videos}}
-      <div>{{.Filename}}</div>
+      {{range .VideoFiles}}
+      <div>
+        <a href="/videos/{{.Name}}">{{.Name}}</a>
+      </div>
       {{end}}
     </div>
   </main>
 </body>
 
 </html>
-

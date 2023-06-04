@@ -1,2 +1,2 @@
 start:
-	find . -name *.html -o -name *.go | entr -r go run .
+	find . -name \*.go -o -name \*.html | entr -r go run .
