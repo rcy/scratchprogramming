@@ -1,21 +1,82 @@
 <html>
 
 <head>
-  <title>player</title>
+  <title>scratch programming</title>
+
   <style>
+    * {
+      margin: 0;
+    }
+
+    body {
+      font-size: 200%;
+    }
+
+    header {
+      display: flex;
+      padding: 10px;
+      background: #4d97ff;
+      font-family: monospace;
+    }
+
+    h1 {
+      color: orange;
+      background: white;
+      padding-left: .5em;
+      padding-right: .5em;
+    }
+
+    h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      display: flex;
+    }
+
+    p {
+      color: black;
+    }
+
+    .content {
+      padding: 1em;
+    }
+
+    .sidebar {
+      background: #4d97ff;
+      min-height: 100vh;
+      padding-top: 100px;
+    }
   </style>
+
 </head>
 
+
 <body>
-  <h1>
-    {{.Name}}
-  </h1>
-  <hr>
-  <video controls autoplay width="960">
-    <source src="/assets/videos/{{.Name}}">
-  </video>
-  <hr>
-  <a href="/">back</a>
+  <header>
+    <!-- <img src="https://scratch.mit.edu/images/logo_sm.png" /> -->
+    <h1><a href="/">scratch programming</a></h1>
+  </header>
+
+  <main>
+    <div class="sidebar">
+      <img width="300px" src="/assets/scratchcat.png" />
+    </div>
+    <div class="content">
+      <h2>
+        {{.Name}}
+      </h2>
+      <hr>
+      <video controls autoplay width="960">
+        <source src="/assets/videos/{{.Name}}">
+      </video>
+      <hr>
+      <a href="/">&larr; back</a>
+    </div>
+  </main>
 </body>
 
 </html>
+
+<html>
