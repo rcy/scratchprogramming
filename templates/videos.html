@@ -60,12 +60,17 @@
 
   <main>
     <div class="sidebar">
-      <img width="300px" src="./scratchcat.png" />
+      <img width="300px" src="/assets/scratchcat.png" />
     </div>
     <div class="content">
-      <p>Learn how to write scratch programs, make games, and play games</p>
+      <h1>Videos</h1>
+
+      {{range .Videos}}
+      <div>{{.Filename}}</div>
+      {{end}}
     </div>
   </main>
 </body>
 
 </html>
+
