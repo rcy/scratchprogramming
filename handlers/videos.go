@@ -4,7 +4,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sort"
 	"strings"
+	"time"
 )
 
 func Videos(w http.ResponseWriter, r *http.Request) {
@@ -51,7 +53,8 @@ func renderIndex(w http.ResponseWriter) {
 }
 
 type VideoFile struct {
-	Name string
+	Name    string
+	ModTime time.Time
 }
 
 func getVideos() ([]VideoFile, error) {
@@ -66,9 +69,17 @@ func getVideos() ([]VideoFile, error) {
 
 	for _, file := range files {
 		if !file.IsDir() {
-			vfs = append(vfs, VideoFile{Name: file.Name()})
+			info, _ := file.Info()
+			vfs = append(vfs, VideoFile{
+				Name:    file.Name(),
+				ModTime: info.ModTime(),
+			})
 		}
 	}
+
+	sort.Slice(vfs, func(i int, j int) bool {
+		return vfs[i].ModTime.After(vfs[j].ModTime)
+	})
 
 	return vfs, nil
 }
