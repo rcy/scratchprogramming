@@ -41,7 +41,7 @@ func renderIndex(w http.ResponseWriter) {
 		w.WriteHeader(500)
 	}
 
-	err = Templates["videos"].Execute(w, struct {
+	err = VideosTemplate.Execute(w, struct {
 		VideoFiles []VideoFile
 	}{
 		VideoFiles: vfs,
@@ -58,7 +58,7 @@ type VideoFile struct {
 }
 
 func getVideos() ([]VideoFile, error) {
-	dir := "/home/rcy/src/scratchprogramming/assets/videos"
+	dir := os.Getenv("ASSET_DIRECTORY") + "/videos"
 
 	vfs := []VideoFile{}
 

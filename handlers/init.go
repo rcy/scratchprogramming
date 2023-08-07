@@ -1,20 +1,14 @@
 package handlers
 
 import (
+	_ "embed"
 	"html/template"
-	"log"
 )
 
-type TemplateMap map[string]*template.Template
+//go:embed "templates/player.html"
+var playerTemplateContent string
+var PlayerTemplate = template.Must(template.New("").Parse(playerTemplateContent))
 
-var Templates TemplateMap
-
-var PlayerTemplate *template.Template
-
-func init() {
-	log.Printf("Init Templates")
-	Templates = TemplateMap{
-		"videos": template.Must(template.ParseFiles("templates/videos.html")),
-	}
-	PlayerTemplate = template.Must(template.ParseFiles("templates/player.html"))
-}
+//go:embed "templates/videos.html"
+var videosTemplateContent string
+var VideosTemplate = template.Must(template.New("").Parse(videosTemplateContent))
