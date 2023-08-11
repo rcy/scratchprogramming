@@ -73,10 +73,14 @@
     </div>
     <div class="content">
       {{range .SubDirs}}
-      <a href="{{.}}">{{.}}</a>
+      {{if (eq $.SubDir .)}}
+      <span style="background: yellow; font-weight: bold">
+        <a href="/videos/{{.}}">{{.}}</a>
+      </span>
+      {{else}}
+      <a href="/videos/{{.}}">{{.}}</a>
       {{end}}
-
-      <h2>{{.SubDir}} videos</h2>
+      {{end}}
 
       <table>
         <tbody>

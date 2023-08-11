@@ -65,11 +65,17 @@
     </div>
     <div class="content">
       {{range .SubDirs}}
-      <a href="{{.}}">{{.}}</a>
+      {{if (eq $.VideoFile.SubDir .)}}
+      <span style="background: yellow; font-weight: bold">
+        <a href="/videos/{{.}}">{{.}}</a>
+      </span>
+      {{else}}
+      <a href="/videos/{{.}}">{{.}}</a>
+      {{end}}
       {{end}}
 
       <h2>
-        <a href="/videos/{{.VideoFile.SubDir}}">{{.VideoFile.SubDir}}</a> - {{.VideoFile.Name}}
+        {{.VideoFile.Name}}
       </h2>
       <video controls autoplay width="960">
         <source src="/assets/videos/{{.VideoFile.SubDir}}/{{.VideoFile.EscapedName}}">
