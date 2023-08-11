@@ -64,11 +64,15 @@
       <img width="300px" src="/assets/scratchcat.png" />
     </div>
     <div class="content">
+      {{range .SubDirs}}
+      <a href="{{.}}">{{.}}</a>
+      {{end}}
+
       <h2>
-        {{.Name}}
+        <a href="/videos/{{.VideoFile.SubDir}}">{{.VideoFile.SubDir}}</a> - {{.VideoFile.Name}}
       </h2>
       <video controls autoplay width="960">
-        <source src="/assets/videos/{{.Name}}">
+        <source src="/assets/videos/{{.VideoFile.SubDir}}/{{.VideoFile.Name}}">
       </video>
       <div>
         <a href="/">&larr; back</a>
@@ -78,5 +82,3 @@
 </body>
 
 </html>
-
-<html>

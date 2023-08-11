@@ -72,14 +72,18 @@
       <img width="300px" src="/assets/scratchcat.png" />
     </div>
     <div class="content">
-      <h2>Videos from the Scratch Team</h2>
+      {{range .SubDirs}}
+      <a href="{{.}}">{{.}}</a>
+      {{end}}
+
+      <h2>{{.SubDir}} videos</h2>
 
       <table>
         <tbody>
           {{range .VideoFiles}}
           <tr>
             <td>
-              <a href="/videos/{{.Name}}">{{.Name}}</a>
+              <a href="/videos/{{$.SubDir}}/{{.Name}}">{{.Name}}</a>
             </td>
           </tr>
           {{end}}
