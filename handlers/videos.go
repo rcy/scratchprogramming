@@ -3,6 +3,7 @@ package handlers
 import (
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"sort"
 	"strings"
@@ -15,7 +16,11 @@ func Videos(w http.ResponseWriter, r *http.Request) {
 	log.Printf("VideosIndex %s request %s", r.URL, parts)
 
 	if len(parts) == 4 {
-		renderPlayer(w, parts[2], parts[3])
+		filename, err := url.QueryUnescape(parts[3])
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+		}
+		renderPlayer(w, parts[2], filename)
 	} else {
 		renderIndex(w, parts[2])
 	}
@@ -77,6 +82,10 @@ type VideoFile struct {
 	SubDir  string
 	Name    string
 	ModTime time.Time
+}
+
+func (vf VideoFile) EscapedName() string {
+	return url.QueryEscape(vf.Name)
 }
 
 func getVideos(subdir string) ([]VideoFile, error) {

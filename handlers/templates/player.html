@@ -72,7 +72,7 @@
         <a href="/videos/{{.VideoFile.SubDir}}">{{.VideoFile.SubDir}}</a> - {{.VideoFile.Name}}
       </h2>
       <video controls autoplay width="960">
-        <source src="/assets/videos/{{.VideoFile.SubDir}}/{{.VideoFile.Name}}">
+        <source src="/assets/videos/{{.VideoFile.SubDir}}/{{.VideoFile.EscapedName}}">
       </video>
       <div>
         <a href="/">&larr; back</a>

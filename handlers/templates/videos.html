@@ -83,7 +83,7 @@
           {{range .VideoFiles}}
           <tr>
             <td>
-              <a href="/videos/{{$.SubDir}}/{{.Name}}">{{.Name}}</a>
+              <a href="/videos/{{$.SubDir}}/{{.EscapedName}}">{{.Name}}</a>
             </td>
           </tr>
           {{end}}
