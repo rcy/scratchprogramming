@@ -3,11 +3,9 @@ export ASSET_DIRECTORY?=${HOME}/data/scratchprogrammingassets
 start:
 	find . -name \*.go -o -name \*.html | entr -r go run .
 
-download:
-	cd ${ASSET_DIRECTORY}/videos && yt-dlp https://www.youtube.com/@ScratchTeam --verbose -f "bv[ext=webm]+ba[ext=webm]" --merge-output-format webm
+dl-%: ${ASSET_DIRECTORY}/videos/%
+	cd $< && pipx run yt-dlp https://www.youtube.com/$* -f "bv[ext=webm]+ba[ext=webm]" --merge-output-format webm
 
-download2:
-	cd ${ASSET_DIRECTORY}/videos && yt-dlp https://www.youtube.com/@Zinnea --verbose -f "bv[ext=webm]+ba[ext=webm]" --merge-output-format webm
-
-download3:
-	cd ${ASSET_DIRECTORY}/videos && yt-dlp https://www.youtube.com/@griffpatch --verbose -f "bv[ext=webm]+ba[ext=webm]" --merge-output-format webm
+.SECONDARY: ${ASSET_DIRECTORY}/videos/%
+${ASSET_DIRECTORY}/videos/%:
+	mkdir $@
