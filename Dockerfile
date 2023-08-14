@@ -6,5 +6,5 @@ RUN go build -o app .
 FROM alpine:latest
 WORKDIR /work
 COPY --from=builder /work/app .
-EXPOSE 8080
+EXPOSE 3333
 CMD ["./app"]
