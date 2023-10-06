@@ -1,4 +1,4 @@
-export ASSET_DIRECTORY?=${HOME}/data/scratchprogrammingassets
+export ASSET_DIRECTORY?=/media/rcy/data/scratchprogrammingassets
 
 start:
 	find . -name \*.go -o -name \*.html | entr -r go run .

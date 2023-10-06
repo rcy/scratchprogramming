@@ -3,7 +3,7 @@ services:
   app:
     build: .
     volumes:
-      - $HOME/data/scratchprogrammingassets:/assets
+      - /media/rcy/data/scratchprogrammingassets:/assets
     environment:
       - ASSET_DIRECTORY=/assets
     ports:
