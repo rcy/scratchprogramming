@@ -11,5 +11,6 @@ mkShell {
     sqlite
     flyctl
     golangci-lint
+    ffmpeg
   ];
 }

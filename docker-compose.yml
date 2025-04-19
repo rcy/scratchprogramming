@@ -3,7 +3,7 @@ services:
   app:
     build: .
     volumes:
-      - /media/rcy/data/scratchprogrammingassets:/assets
+      - /mnt/spinner/scratchprogrammingassets:/assets
     environment:
       - ASSET_DIRECTORY=/assets
     ports:
